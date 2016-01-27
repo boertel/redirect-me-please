@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "I don't want to see your website",
+    "version": "0.1",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.designernews.co/stories/*",
+                "https://www.producthunt.com/tech/*"
+            ],
+            "js": [
+                "jquery-2.2.0.min.js",
+                "idwtsyw.js"
+                ]
+        }
+    ]
+
+}
