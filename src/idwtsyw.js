@@ -19,7 +19,9 @@ function notification(url) {
         boxSizing: 'border-box'
     });
 
-    var content = $('<div />').html('This isn\'t the page you are looking for...Redirecting to&nbsp;<a href="' + url + '">' + url + '</a>'),
+    var questionMark = url.indexOf('?'),
+        formattedUrl = questionMark !== -1 ? url.substring(0, questionMark) + '...' : url;
+    var content = $('<div />').html('This isn\'t the page you are looking for...Redirecting to&nbsp;<a href="' + url + '">' + formattedUrl + '</a>'),
         close = $('<div />').html('&times;'),
         timer = $('<div />');
 
@@ -84,5 +86,8 @@ var domain = window.location.host,
     redirectTo = findLinks[domain];
 
 if (redirectTo) {
-    notification(redirectTo());
+    var url = redirectTo();
+    if (url.startsWith('http')) {
+        notification(url);
+    }
 }
