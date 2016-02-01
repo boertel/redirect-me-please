@@ -10,7 +10,7 @@
             ],
             "js": [
                 "jquery-2.2.0.min.js",
-                "idwtsyw.js"
+                "rmp.js"
                 ]
         }
     ]
