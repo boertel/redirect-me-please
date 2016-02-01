@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "I don't want to see your website",
-    "version": "0.1",
+    "name": "Redirect me, please",
+    "version": "0.2",
     "content_scripts": [
         {
             "matches": [
