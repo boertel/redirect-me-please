@@ -75,10 +75,13 @@ function notification(url) {
 
 var findLinks = {
     'www.designernews.co': function () {
-        return $('h1[itemprop="name"] a').attr('href');
+        return $('h1[itemprop="name"] a');
     },
     'www.producthunt.com': function () {
-        return $('.post-get-it-button--primary').attr('href');
+        return $('.post-get-it-button--primary');
+    },
+    'www.datatau.com': function () {
+        return $('.title > a');
     }
 };
 
@@ -86,7 +89,7 @@ var domain = window.location.host,
     redirectTo = findLinks[domain];
 
 if (redirectTo) {
-    var url = redirectTo();
+    var url = redirectTo().attr('href');
     if (url.startsWith('http')) {
         notification(url);
     }

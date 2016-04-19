@@ -1,12 +1,13 @@
 {
     "manifest_version": 2,
     "name": "Redirect me, please",
-    "version": "0.2",
+    "version": "0.3",
     "content_scripts": [
         {
             "matches": [
                 "https://www.designernews.co/stories/*",
-                "https://www.producthunt.com/tech/*"
+                "https://www.producthunt.com/tech/*",
+                "http://www.datatau.com/item*"
             ],
             "js": [
                 "jquery-2.2.0.min.js",
