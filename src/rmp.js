@@ -78,7 +78,7 @@ var findLinks = {
         return $('h1[itemprop="name"] a');
     },
     'www.producthunt.com': function () {
-        return $('.post-get-it-button--primary');
+        return $('a[target="_blank"]');
     },
     'www.datatau.com': function () {
         return $('.title > a');
@@ -89,8 +89,11 @@ var domain = window.location.host,
     redirectTo = findLinks[domain];
 
 if (redirectTo) {
-    var url = redirectTo().attr('href');
-    if (url.startsWith('http')) {
-        notification(url);
+    var url = redirectTo();
+    if (url) {
+        url = url.attr('href');
+        if (url.startsWith('http')) {
+            notification(url);
+        }
     }
 }
