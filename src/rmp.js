@@ -1,5 +1,5 @@
 var options = {
-    timeout: true
+    timeout: true,
 };
 
 
@@ -74,22 +74,39 @@ function notification(url) {
 }
 
 var findLinks = {
-    'www.designernews.co': function () {
-        return $('h1[itemprop="name"] a');
+    'www.designernews.co': {
+        find: function () {
+            return $('h1#story-header-title a');
+        },
+        css: {
+            '#header-container': {
+                position: 'relative',
+            },
+        }
     },
-    'www.producthunt.com': function () {
-        return $('a[target="_blank"]');
+    'www.producthunt.com': {
+        find: function () {
+            return $('a[target="_blank"]');
+        },
     },
-    'www.datatau.com': function () {
-        return $('.title > a');
-    }
+    'www.datatau.com': {
+        find: function () {
+            return $('.title > a');
+        },
+    },
 };
 
 var domain = window.location.host,
     redirectTo = findLinks[domain];
 
 if (redirectTo) {
-    var url = redirectTo();
+    var url = redirectTo.find(),
+        css = redirectTo.css;
+
+    for (var key in css) {
+        $(key).css(css[key]);
+    }
+
     if (url) {
         url = url.attr('href');
         if (url.startsWith('http')) {
